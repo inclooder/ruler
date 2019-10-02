@@ -8,6 +8,7 @@ A Simple tool to measure pixels on the screen.
 
 * Moving on the screen with mouse cursor (click and drag).
 * Rotation - soon
+* Config file - soon
 
 # Build
 
