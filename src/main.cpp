@@ -6,7 +6,6 @@
 #include <iostream>
 #include <string>
 
-
 class RulerWindow : public Gtk::ApplicationWindow {
   public:
     RulerWindow() {
@@ -83,13 +82,22 @@ class RulerWindow : public Gtk::ApplicationWindow {
       }
       return true;
     }
+
+    virtual bool on_key_press_event(GdkEventKey* key_event) {
+      if (key_event->keyval == GDK_KEY_q) {
+        close();
+        return true;
+      }
+
+      return false;
+    }
   private:
     bool moveWithCursor = false;
     double clickX, clickY;
 };
 
 int main(int argc, char *argv[]) {
-  auto app = Gtk::Application::create(argc, argv, "pl.codelife.ruler");
+  auto app = Gtk::Application::create(argc, argv, "pl.inclooder.ruler");
   RulerWindow hw;
   return app->run(hw);
 }

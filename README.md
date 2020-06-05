@@ -9,6 +9,12 @@ A Simple tool to measure pixels on the screen.
 * Moving on the screen with mouse cursor (click and drag).
 * Rotation - soon
 
+# Hotkeys
+
+```
+q = quit 
+```
+
 # Build
 
 ```sh
