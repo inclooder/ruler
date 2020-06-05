@@ -18,7 +18,10 @@ class RulerWindow : public Gtk::ApplicationWindow {
   protected:
     virtual bool on_draw(const ::Cairo::RefPtr<::Cairo::Context> & cr) {
       ::Cairo::RefPtr<::Cairo::Surface> surface = cr->get_target();
-      cr->set_source_rgb(0.608, 0.765, 0.031);
+
+      if(is_active()) cr->set_source_rgb(0.2, 0.5, 0.5);
+      else cr->set_source_rgb(0.5, 0.5, 0.5);
+
       cr->paint();
 
       //Paint markers
@@ -47,7 +50,7 @@ class RulerWindow : public Gtk::ApplicationWindow {
           cr->move_to(x - (extents.width / 2), 20);
           cr->show_text(text);
         } else {
-          cr->set_source_rgb(0.5, 0.5, 0.5);
+          cr->set_source_rgb(0.8, 0.8, 0.8);
           cr->move_to(x, 0);
           cr->line_to(x, 10);
           cr->stroke();
@@ -87,6 +90,18 @@ class RulerWindow : public Gtk::ApplicationWindow {
       if (key_event->keyval == GDK_KEY_q) {
         close();
         return true;
+      }
+
+      return false;
+    }
+
+    virtual bool on_event(GdkEvent* gdk_event) {
+      if (gdk_event->type == GDK_WINDOW_STATE) {
+        GdkWindowState changed_mask = gdk_event->window_state.changed_mask;
+
+        bool focusChanged = (changed_mask & GDK_WINDOW_STATE_FOCUSED) == GDK_WINDOW_STATE_FOCUSED;
+
+        if (focusChanged) queue_draw();
       }
 
       return false;
