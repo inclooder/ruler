@@ -7,7 +7,8 @@ A Simple tool to measure pixels on the screen.
 # Features
 
 * Moving on the screen with mouse cursor (click and drag).
-* Rotation - soon
+* Rotation - todo
+* Config file - todo
 
 # Hotkeys
 
