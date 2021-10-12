@@ -7,20 +7,21 @@ A Simple tool to measure pixels on the screen.
 # Features
 
 * Moving on the screen with mouse cursor (click and drag).
-* Rotation - todo
+* Rotation
 * Config file - todo
 
 # Hotkeys
 
 ```
 q = quit 
+r = rotate
 ```
 
 # Build
 
 ```sh
 meson build
-cd builddir
+cd build
 ninja
 ./ruler
 ```
